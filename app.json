@@ -20,6 +20,10 @@
     "SERVER_URL": {
       "description": "URL to connect to your Heroku instance (update with your app's name + PARSE_MOUNT)",
       "value": "http://fbu-1-up.herokuapp.com/parse"
+    },
+    "FCM_API_KEY":{
+      "description":"Firebase cloud messaging key",
+      "value":""
     }
   },
   "image": "heroku/nodejs",
