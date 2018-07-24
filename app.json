@@ -24,6 +24,10 @@
     "FCM_API_KEY":{
       "description":"Firebase cloud messaging key",
       "value":""
+    },
+    "FCM_SENDER_ID":{
+      "description": "Firebase Cloud Messaging sender id",
+      "value":""
     }
   },
   "image": "heroku/nodejs",

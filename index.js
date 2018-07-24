@@ -22,6 +22,7 @@ var api = new ParseServer({
   },
   push: {
     android:{
+      senderId:process.env.FCM_SENDER_ID || '',
       apiKey:process.env.FCM_API_KEY || ''
     }
   }
