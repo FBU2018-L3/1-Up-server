@@ -1,11 +1,11 @@
-import { logger } from 'parse-server';
+const logger = require('parse-server').logger;
 
 Parse.Cloud.define('hello', function(req, res) {
     res.success('Hi');
 });
 
 Parse.Cloud.afterSave(Parse.User, function(req){
-    logger.info("After saved started");
+    logger.info("Started");
     // const userId = req.object.id;
     // let query = new Parse.Query(Parse.User);
     // query.equalTo("objectId", userId);
