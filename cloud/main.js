@@ -7,7 +7,8 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.afterSave(Parse.User, function(req){
     logger.info("Started");
     const user = req.object;
-    logger.info("USER is: " + user.get("username"))
+    logger.info("USER is: " + user.get("username"));
+    logger.info("request: " + JSON.stringify(req));
 
     var query = new Parse.Query(Parse.Installation);
 
