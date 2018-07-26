@@ -18,6 +18,8 @@ Parse.Cloud.define("setSleepReminder", function(req, res){
       const user = results[0];
       var pushQuery = new Parse.Query(Parse.Installation);
       pushQuery.equalTo('user', user);
+      pushQuery.first()
+      pushQuery.descending("createdAt");
       Parse.Push.send({
         where: pushQuery,
         //push_time: date,
@@ -41,5 +43,6 @@ Parse.Cloud.define("setSleepReminder", function(req, res){
   }, function(error){
     console.error("ERROR getting user");
   })
+  return;
 });
 
