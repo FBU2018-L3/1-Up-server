@@ -28,18 +28,19 @@ Parse.Cloud.define("setSleepReminder", function(req, res){
       }, {
         success: function() {
           console.log('##### PUSH OK');
-          response.success("ok");
+          res.success("ok");
         },
         error: function(error) {
           console.error('##### PUSH ERROR');
-          response.error("error");
+          res.error("error");
         },
         useMasterKey: true
       });
     }
   }, function(error){
+    res.error("ERROR getting user");
     console.error("ERROR getting user");
   })
-  return;
+  res.success("ok");
 });
 
