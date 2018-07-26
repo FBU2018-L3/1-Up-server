@@ -5,6 +5,7 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 Parse.Cloud.define("setSleepReminder", function(req, res){
+  let query = new Parse.Query(Parse.User);
   // Set the date that the notification is supossed to arrive
   let date = new Date();
   date.setMinutes(date.getMinutes()+5);
