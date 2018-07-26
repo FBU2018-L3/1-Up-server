@@ -10,12 +10,12 @@ Parse.Cloud.afterSave(Parse.User, function(req){
     logger.info("USER is: " + user.get("username"));
     logger.info("request: " + JSON.stringify(req));
 
-    var query = new Parse.Query(Parse.Installation);
-
+    var pushQuery = new Parse.Query(Parse.Installation);
+    pushQuery.equalTo('user', user);
     Parse.Push.send({
-      where: query,
+      where: pushQuery,
       data: {
-        alert: 'Test',
+        alert: "Hey you're + " + user.get("username"),
         badge: 1,
         sound: 'default'
       }
