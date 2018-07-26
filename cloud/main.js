@@ -20,9 +20,9 @@ Parse.Cloud.define("setSleepReminder", function(req, res){
       pushQuery.equalTo('user', user);
       Parse.Push.send({
         where: pushQuery,
-        push_time: date,
+        //push_time: date,
         data: {
-          alert: "Hey you're + " + user.get("username"),
+          alert: "Hey " + user.get("username") + " don't remove this so in the morning you remember to set your state as awake!",
           badge: 1,
           sound: 'default'
         }
