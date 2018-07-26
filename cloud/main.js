@@ -6,8 +6,8 @@ Parse.Cloud.define('hello', function(req, res) {
 
 Parse.Cloud.afterSave(Parse.User, function(req){
     logger.info("Started");
-    const userId = req.object;
-    logger.info("USER is: " + object.username)
+    const user = req.object;
+    logger.info("USER is: " + user.username)
     // let query = new Parse.Query(Parse.User);
     // query.equalTo("objectId", userId);
     // query.limit(1);
