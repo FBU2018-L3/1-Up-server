@@ -5,8 +5,9 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 Parse.Cloud.define("setSleepReminder", function(req, res){
-  console.log("Starting the push notification")
+  console.log("Starting the push notification");
   let query = new Parse.Query(Parse.User);
+  console.log("User is: " + req.params.userId);
   query.equalTo("objectId", req.params.userId);
   query.limit(1);
   query.find().then(function(results){
