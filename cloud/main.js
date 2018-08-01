@@ -44,3 +44,9 @@ Parse.Cloud.define("setSleepReminder", function(req, res){
   res.success("ok");
 });
 
+Parse.Cloud.beforeSave("Event", function(request, response){
+  if(request.object.get("isPrivate")==null){
+    request.object.set("isPrivate", false);
+  }
+  response.success();
+});
