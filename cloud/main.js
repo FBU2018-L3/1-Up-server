@@ -50,3 +50,41 @@ Parse.Cloud.beforeSave("Event", function(request, response){
   }
   response.success();
 });
+
+Parse.Cloud.beforeSave("PowerUp", function(request, response){
+  let powerUp = request.object;
+    if (powerUp.isNew()) {
+      query.equalTo("objectId", powerUp.get("sentTo"));
+      query.limit(1);
+      query.find().then(function(results){
+        if(results.length>0){
+          const user = results[0];
+          var pushQuery = new Parse.Query(Parse.Installation);
+          pushQuery.equalTo('user', user);
+          Parse.Push.send({
+            where: pushQuery,
+            //push_time: date,
+            data: {
+              alert: "You got a new PowerUp, check it out!",
+              badge: 1,
+              sound: 'default'
+            }
+          }, {
+            success: function() {
+              console.log('##### PUSH OK');
+              res.success("ok");
+            },
+            error: function(error) {
+              console.error('##### PUSH ERROR');
+              res.success("error on sending push notifs");
+            },
+            useMasterKey: true
+          });
+        }
+      }, function(error){
+        res.error("error on sending push notifs");
+        console.error("ERROR getting user");
+      });
+    }
+    res.success("ok");
+});
