@@ -73,19 +73,19 @@ Parse.Cloud.beforeSave("PowerUp", function(request, response){
           }, {
             success: function() {
               console.log('##### PUSH OK');
-              res.success("ok");
+              response.success("ok");
             },
             error: function(error) {
               console.error('##### PUSH ERROR');
-              res.success("error on sending push notifs");
+              response.success("error on sending push notifs");
             },
             useMasterKey: true
           });
         }
       }, function(error){
-        res.error("error on sending push notifs");
+        response.error("error on sending push notifs");
         console.error("ERROR getting user");
       });
     }
-    res.success("ok");
+    response.success("ok");
 });
