@@ -55,6 +55,7 @@ Parse.Cloud.beforeSave("PowerUp", function(request, response){
   let powerUp = request.object;
     if (powerUp.isNew()) {
       let query = new Parse.Query(Parse.User);
+      console.log(powerUp.get("sentTo"));
       query.equalTo("objectId", powerUp.get("sentTo"));
       query.limit(1);
       query.find().then(function(results){
