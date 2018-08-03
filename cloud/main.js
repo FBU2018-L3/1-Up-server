@@ -59,6 +59,7 @@ Parse.Cloud.beforeSave("PowerUp", function(request, response){
       query.limit(1);
       query.find().then(function(results){
         if(results.length>0){
+          console.log('##### PUSH START');
           const user = results[0];
           var pushQuery = new Parse.Query(Parse.Installation);
           pushQuery.equalTo('user', user);
@@ -81,6 +82,10 @@ Parse.Cloud.beforeSave("PowerUp", function(request, response){
             },
             useMasterKey: true
           });
+        }
+        else{
+          response.error("error on sending push notifs");
+          console.error("ERROR getting user");  
         }
       }, function(error){
         response.error("error on sending push notifs");
