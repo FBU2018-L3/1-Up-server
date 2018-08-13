@@ -21,7 +21,7 @@ Parse.Cloud.define("setSleepReminder", function(req, res){
         where: pushQuery,
         //push_time: date,
         data: {
-          alert: "Hey " + user.get("username") + " don't remove this so in the morning you remember to set your state as awake!",
+          alert: "Hey " + user.get("username") + " 1-Up is currently in sleep mode, remember to toogle it when you wake up!",
           badge: 1,
           sound: 'default'
         }
